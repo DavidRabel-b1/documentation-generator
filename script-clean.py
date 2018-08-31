@@ -162,7 +162,7 @@ def get_ceph_devices_for_host(host):
 
 ### Basic Informations (global)
 def get_header():
-    return FILEBASE
+    return os.path.basename(os.path.dirname(FILEBASE))
 
 def get_resolvconf_nameserver():
     nameserver = get_val_from_file("resolvconf_nameserver","environments/configuration.yml")
