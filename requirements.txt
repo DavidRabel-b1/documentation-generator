@@ -1,0 +1,1 @@
+ansible==2.3.0.0 # pinning version due to "cannot import name VariableManager" error
