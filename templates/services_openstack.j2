@@ -1,0 +1,26 @@
+OpenStack
+---------
+
+.. list-table::
+   :header-rows: 0
+   :widths: 3 10
+
+   * - **Version**
+     - {{ get_val_from_file("openstack_version","environments/configuration.yml") }} / {{ get_val_from_file("repository_version","environments/configuration.yml") }}
+   * - **Authentication**
+     - ?????
+   * - **Virtualisation**
+     - ?????
+   * - **Storage**
+     - ?????
+   * - **Network**
+     - ?????
+   * - **Shared services**
+       {%- for service in get_openstack_shared_services() %}
+       - * {{ service }}
+       {%- endfor %}
+   * - **Services**
+       {%- for service in get_openstack_services() %}
+       - * {{ service }}
+       {%- endfor %}
+

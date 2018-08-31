@@ -1,0 +1,36 @@
+Endpoints
+=========
+
+Dashboards / Interfaces
+-----------------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 3 3 3
+
+   * - **Service**
+     - **Internal endpoint**
+     - **External endpoint**
+     {%- for dash in get_dashboards() %}
+   * - {{ dash }}
+     - {{ get_dashboard_inturl(dash) }}
+     - {{ get_dashboard_exturl(dash) }}
+     {%- endfor %}
+
+
+API endpoints
+-------------
+
+.. list-table::
+   :header-rows: 1
+   :widths: 3 3 3
+
+   * - **Service**
+     - **Internal endpoint**
+     - **External endpoint**
+     {%- for aep in get_apiendpoints() %}
+   * - {{ aep }}
+     - {{ get_apiendpoint_inturl(aep) }}
+     - {{ get_apiendpoint_exturl(aep) }}
+     {%- endfor %}
+

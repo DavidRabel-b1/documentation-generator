@@ -1,0 +1,17 @@
+Inventory
+=========
+
+.. list-table:: All hosts
+   :header-rows: 1
+   :widths: 3 3 3
+
+   * - **Identifier**
+     - **Hostname**
+     - **Management address**
+     - **Int. address**
+{%- for host in list_hosts() %}
+   * - {{ get_inventory_hostname(host) }}
+     - {{ get_inventory_hostname(host) }}
+     - ``{{ get_management_address_for_host(host) }}``
+     - ``{{ get_val_from_file("internal_address","inventory/host_vars/%s.yml" % (host)) }}``
+{%- endfor %}

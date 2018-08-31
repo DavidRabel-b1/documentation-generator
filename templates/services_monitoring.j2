@@ -1,0 +1,15 @@
+Logging & Monitoring
+--------------------
+
+.. list-table::
+   :header-rows: 0
+   :widths: 3 10
+
+   * - **Version**
+     - {{ get_val_from_file("openstack_version","environments/configuration.yml") }} / {{ get_val_from_file("repository_version","environments/configuration.yml") }}
+   * - **Services**
+    {%- for service in get_monitoring_services() %}
+       * {{ service }}
+    {%- endfor %}
+   * - **Exporter**
+     - * Node
