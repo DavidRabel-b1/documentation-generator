@@ -7,7 +7,7 @@ Generic
    :widths: 4 10
 
    * - **Configuration repository**
-     - ????
+     - {{ get_val_from_file("configuration_git_protocol","environments/configuration.yml") }}://{{ get_val_from_file("configuration_git_username","environments/configuration.yml") }}@{{ get_val_from_file("configuration_git_host","environments/configuration.yml") }}:{{ get_val_from_file("configuration_git_port","environments/configuration.yml") }}/{{ get_val_from_file("configuration_git_repository","environments/configuration.yml") }}
    * - **Distribution**
      - {{ get_val_from_file("kolla_base_distro","environments/kolla/configuration.yml") }}
    * - **Operator user**
@@ -15,16 +15,19 @@ Generic
    * - **Operator group**
      - ``{{ get_val_from_file("operator_group","environments/configuration.yml") }}``
    * - **DNS servers**
+     -
      {%- for ns in get_resolvconf_nameserver() %}
-     - * ``{{ns}}``
+       * ``{{ns}}``
      {%- endfor %}
    * - **NTP servers**
+     -
      {%- for ntp in get_security_ntp() %}
-     - * ``{{ntp}}``
+       * ``{{ntp}}``
      {%- endfor %}
-   * - **Domain**
+   * - **Domains**
+     -
      {%- for dom in get_resolvconf_search() %}
-     - ``{{dom}}``
+       * ``{{dom}}``
      {%- endfor %}
    * - **Internal VIP**
      - ``{{ get_val_from_file("kolla_internal_vip_address","environments/configuration.yml") }}``

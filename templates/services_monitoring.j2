@@ -8,8 +8,10 @@ Logging & Monitoring
    * - **Version**
      - {{ get_val_from_file("openstack_version","environments/configuration.yml") }} / {{ get_val_from_file("repository_version","environments/configuration.yml") }}
    * - **Services**
-    {%- for service in get_monitoring_services() %}
+     -
+     {%- for service in get_monitoring_services() %}
        * {{ service }}
-    {%- endfor %}
+     {%- endfor %}
    * - **Exporter**
      - * Node
+

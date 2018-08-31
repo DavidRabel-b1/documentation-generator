@@ -1,6 +1,6 @@
 {% for host in list_hosts() %}
 {{ get_inventory_hostname(host) }}
------------------------
+-----------------------------------
 .. list-table::
    :header-rows: 0
    :widths: 3 10
@@ -23,7 +23,7 @@
      - ``{{ get_val_from_file("fluentd_host","inventory/host_vars/%s.yml" % (host)) }}``
    * - **Prometheus**
      - ``{{ get_val_from_file("prometheus_scraper_interface","inventory/host_vars/%s.yml" % (host)) }}``
-   * - **Monitoring**
+   * - **Ceph Monitor**
      - ``{{ get_val_from_file("monitor_interface","inventory/host_vars/%s.yml" % (host)) }}``
    * - **Int. Address**
      - ``{{ get_val_from_file("internal_address","inventory/host_vars/%s.yml" % (host)) }}``
@@ -32,26 +32,31 @@
    * - **Neutron Provider**
      - ``{{ get_val_from_file("enable_neutron_provider_networks","inventory/host_vars/%s.yml" % (host)) }}``
    * - **Groups**
+     -
 {%- for group in get_group_names(host) %}
-     - ``{{ group }}``
+       * ``{{ group }}``
 {%- endfor %}
    * - **Network interfaces**
+     -
 {%- for nic in get_network_interfaces_for_host(host) %}
-     - ``{{ nic }}``
+       * ``{{ nic }}``
 {%- endfor %}
    * - **Network addresses**
+     -
 {%- for nicadr in get_network_interface_addresses_for_host(host) %}
-     - ``{{ nicadr }}``
+       * ``{{ nicadr }}``
 {%- endfor %}
    * - **System Role**
+     -
 {%- for role in get_role_for_host(host) %}
-     - ``{{ role }}``
+       * ``{{ role }}``
 {%- endfor %}
    * - **Storage Interface**
      - ``{{ get_val_from_file("storage_interface","inventory/host_vars/%s.yml" % (host)) }}``
    * - **Ceph Devices**
+     -
 {%- for cephdev in get_ceph_devices_for_host(host) %}
-     - ``{{ cephdev }}``
+       * ``{{ cephdev }}``
 {%- endfor %}
 
 

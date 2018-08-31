@@ -8,8 +8,9 @@ Ceph
    * - **Version**
      - {{ get_val_from_file("ceph_version","environments/infrastructure/configuration.yml") }} / {{ get_val_from_file("repository_version","environments/configuration.yml") }}
    * - **Services**
+     -
      {%- for service in get_ceph_services() %}
-     - {{ service }}
+       * {{ service }}
      {%- endfor %}
    * - **Network cluster**
      - ``{{ get_val_from_file("cluster_network","environments/ceph/configuration.yml") }}``
@@ -22,7 +23,8 @@ Ceph
    * - **fsid**
      - ``{{ get_val_from_file("fsid","environments/ceph/configuration.yml") }}``
    * - **Pools**
+     -
      {%- for pool in get_openstack_pools() %}
-     - {{ pool }}
+       * {{ pool }}
      {%- endfor %}
 
