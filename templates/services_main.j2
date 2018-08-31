@@ -11,8 +11,9 @@ Generic
    * - **Version**
      - {{ get_val_from_file("openstack_version","environments/configuration.yml") }} / {{ get_val_from_file("repository_version","environments/configuration.yml") }}
    * - **Services**
+     -
      {%- for service in get_generic_services() %}
-     * {{ service }}
+       * {{ service }}
      {%- endfor %}
 
 
