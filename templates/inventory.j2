@@ -7,29 +7,31 @@
 
    * - **Hostname**
      - {{ get_inventory_hostname(host) }}
-   * - **Management device**
+   * - **Hostname short**
+     - ``{{ get_inventory_hostname_short(host) }}``
+   * - **Management interface**
      - ``{{ get_val_from_file("management_interface","inventory/host_vars/%s.yml" % (host)) }}``
    * - **Management address**
      - ``{{ get_management_address_for_host(host) }}``
-   * - **Console address**
+   * - **Console interface**
      - ``{{ get_val_from_file("console_interface","inventory/host_vars/%s.yml" % (host)) }}``
-   * - **Hostname Short**
-     - ``{{ get_inventory_hostname_short(host) }}``
-   * - **Ansible Host**
+   * - **Ansible host**
      - ``{{ get_ansible_host(host) }}``
-   * - **Tunnel Interface**
+   * - **Tunnel interface**
      - ``{{ get_val_from_file("tunnel_interface","inventory/host_vars/%s.yml" % (host)) }}``
    * - **Fluentd**
      - ``{{ get_val_from_file("fluentd_host","inventory/host_vars/%s.yml" % (host)) }}``
-   * - **Prometheus**
+   * - **Prometheus interface**
      - ``{{ get_val_from_file("prometheus_scraper_interface","inventory/host_vars/%s.yml" % (host)) }}``
-   * - **Ceph Monitor**
+   * - **Ceph Monitor interface**
      - ``{{ get_val_from_file("monitor_interface","inventory/host_vars/%s.yml" % (host)) }}``
-   * - **Int. Address**
+   * - **Storage interface**
+     - ``{{ get_val_from_file("storage_interface","inventory/host_vars/%s.yml" % (host)) }}``
+   * - **Internal address**
      - ``{{ get_val_from_file("internal_address","inventory/host_vars/%s.yml" % (host)) }}``
-   * - **Perm. Service restart**
+   * - **Allow network service restart**
      - ``{{ get_val_from_file("network_allow_service_restart","inventory/host_vars/%s.yml" % (host)) }}``
-   * - **Neutron Provider**
+   * - **Neutron provider networks enabled**
      - ``{{ get_val_from_file("enable_neutron_provider_networks","inventory/host_vars/%s.yml" % (host)) }}``
    * - **Groups**
      -
@@ -51,8 +53,6 @@
 {%- for role in get_role_for_host(host) %}
        * ``{{ role }}``
 {%- endfor %}
-   * - **Storage Interface**
-     - ``{{ get_val_from_file("storage_interface","inventory/host_vars/%s.yml" % (host)) }}``
    * - **Ceph Devices**
      -
 {%- for cephdev in get_ceph_devices_for_host(host) %}
